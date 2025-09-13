@@ -1,0 +1,20 @@
+{
+  "url": "https://www.popmart.com/jp/brand-ip/18/THE%20MONSTERS%20by%20Kasing%20Lung",
+  "use_requests": false,
+  "wait_for_selector": null,
+  "selectors": {
+    "item_selector": ".product-list .product-item",
+    "name_selector": ".product-title, .title, h3, h2",
+    "url_selector": "a",
+    "image_selector": "img",
+    "stock_selector": ".stock-label, .sold-out, .button"
+  },
+  "sold_out_patterns": ["売り切れ", "SOLD OUT", "sold out", "売切"],
+  "in_stock_patterns": ["カートに入れる", "在庫あり", "Add to cart", "Add to Basket", "カート"],
+  "assume_in_stock_if_no_label": false,
+  "notify_new": false,
+  "notify_new_in_stock": true,
+  "discord_webhook_url": "",
+  "mention_role": "",
+  "state_file": "state.json"
+}
