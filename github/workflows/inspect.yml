@@ -1,0 +1,33 @@
+name: selector-inspect
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Install Playwright browsers
+        run: python -m playwright install --with-deps
+      - name: Run selector inspector
+        run: |
+          python selector_inspector.py
+      - name: Upload log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selector-inspect-log
+          path: |
+            # capture full workflow log via default logs; no file to upload by default
+            # The console log is available in Actions -> Job -> Logs
+            .  # placeholder (console log will be available in Actions UI)
